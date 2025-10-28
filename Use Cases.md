@@ -1,3 +1,4 @@
+## Use Cases
 | Use Case | Description |
 |----------|-------------|
 | **UC-1: Query Academic / Administrative Information** | Users interact with the assistant via text or voice to ask about class schedules, deadlines, policies, analytics, etc. The AI interprets and retrieves relevant information from institutional databases. |
@@ -8,3 +9,8 @@
 | **UC-6: Authenticate and Personalize User Experience** | The system authenticates users via institutional SSO (Single Sign-On) and personalizes responses using stored history and user preferences (such as notifications and language). |
 | **UC-7: Monitor and Maintain System Health** | Maintainers track system health, latency, and errors via dashboards, and deploy updates with zero downtime using continuous deployment pipelines. |
 | **UC-8: Synchronize Institutional Data** | External systems such as LMS, Registration, Calendar, and Email automatically exchange data with AIDAP to keep institutional information updated at configurable intervals. |
+
+
+## Use Case Diagram
+<img src="Diagrams/Use Case.png" width="100%"></img>
+
