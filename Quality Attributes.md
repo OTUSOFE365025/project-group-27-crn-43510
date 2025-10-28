@@ -1,6 +1,6 @@
 | ID | Quality Attribute | Scenario | Associated Use Case |
 |----|-------------------|-----------|---------------------|
-|  QA1  |        Performance           |   Notifications and announcements should be delivered to users within 5 seconds of being published.        |        UC-2             |
+|  QA1  |        Performance           |   Notifications, responses, and queries should be generated or delivered within 2 seconds on average under normal load, ensuring smooth interaction.        |        UC-2, UC-4            |
 |  QA2  |        Usability           |     The system interface should allow users to easily locate academic or administrative information within three clicks.      |       UC-1              |
 |  QA3  |      Modifiability              |   The system should allow administrators to update institutional policies or integrations without interrupting other features.        |     UC-5, UC-7                |
 |  QA4  |     Security              |     Only verified instructors should be able to upload or modify course materials to prevent unauthorized access.      |       UC-3              |
