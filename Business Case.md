@@ -1,5 +1,4 @@
-
-                                                                 ## Business Case
+## Business Case
                                                                  
 As technology has begun continuously advancing rapidly, its usage has become an important part of everyone's lives as a valuable asset used by multiple types of companies and organizations, such as universities. Universities have incorporated new technology and software tools to manage their university systems. However, sometimes being able to effectively manage and handle the external university systems could get complicated and challenging in order to provide efficient information and manage all the data, causing challenges and negative impacts on the university's stakeholders such as students, lecturers, administrators, system maintainers, and data source systems overall.
 
