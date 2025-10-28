@@ -1,1 +1,3 @@
-Add the Use Cases to this file
+| Use Case | Description |
+|----------|-------------|
+| UC-1:| |
