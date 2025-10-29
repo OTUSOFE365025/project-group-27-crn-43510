@@ -14,3 +14,4 @@
 ## Use Case Diagram
 <img src="Diagrams/Use Case.png" width="100%"></img>
 
+> ✒️ Author: Khushi Patel
