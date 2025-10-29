@@ -8,3 +8,5 @@
 | **CRN-4** | Encourage collaboration, understanding and regular communication among development team members. |
 | **CRN-5** | Maintain consistent coding standards, documentation practices and structure across all AIDAP modules. |
 | **CRN-6** | Ensure proper integration between frontend and backend components. |
+
+> ✒️ Author: Khushi Patel
