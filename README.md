@@ -26,7 +26,7 @@ The **AI-Powered Digital Assistant Platform (AIDAP)** helps students, lecturers,
 | Prabhnoor Saini | 100946515 | Quality Attributes, Constraints, README.md |
 | Hadia Ali | 100876605 | Business Case      |
 
-## ⚙️ Technologies Used
+## ⚙️ Technologies & Tools
 - **Diagramming Tool:** Draw.io (use case diagram)  
 - **Markdown & GitHub:** All project documentations are directly implemented in GitHub markdown.
 
