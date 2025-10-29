@@ -7,6 +7,6 @@
 |  QA5  |      Availability             |    The system should automatically detect and recover from failures to maintain 99.5% uptime during critical operations.       |      UC-2, UC-4, UC-7, UC-8               |
 |  QA6  |        Scalability           |     The system should efficiently handle up to 5,000 concurrent users without degradation in performance or response time.      |        All             |
 |  QA7  |      Reliability             |     The system should remain functional and display accurate results even when multiple users access it simultaneously.      |      UC-4, UC-8               |
-|  QA8  |     Interoperability        |     The platform should exchange and synchronize data across different institutional using standard APIs      |   UC5, UC8   |
+|  QA8  |     Interoperability        |     The platform should exchange and synchronize data across different institutional using standard APIs      |   UC-5, UC-8   |
 
 > ✒️ Author: Prabhnoor Saini
