@@ -1,4 +1,4 @@
-                                                                  ## Business Case
+## Business Case
                                                                  
 As technology is rapidly advancing continuously, its usage has become an essential part of daily operations used by multiple types of companies and organizations, which also includes universities. Universities have incorporated new technology and software tools to manage their university system operations more efficiently. However, sometimes being able to effectively manage and coordinate the external university systems could get complicated and challenging in order to provide efficient information and manage all the data; causing challenges and negative impacts on the university's stakeholders such as students, lecturers, administrators, system maintainers, and data source systems overall.
 
