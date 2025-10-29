@@ -8,3 +8,5 @@
 |  QA6  |        Scalability           |     The system should efficiently handle up to 5,000 concurrent users without degradation in performance or response time.      |        All             |
 |  QA7  |      Reliability             |     The system should remain functional and display accurate results even when multiple users access it simultaneously.      |      UC-4, UC-8               |
 |  QA8  |     Interoperability        |     The platform should exchange and synchronize data across different institutional using standard APIs      |   UC5, UC8   |
+
+> ✒️ Author: Prabhnoor Saini
