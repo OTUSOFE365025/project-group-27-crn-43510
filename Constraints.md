@@ -6,3 +6,5 @@
 |   CON-4   |   Users should be able to access the assistant through web, mobile, and voice devices, and it should follow accessibility and responsive design standards.         |
 |  CON-5    |   The AI part of the system should work efficiently, support multiple languages, and be easy to update or replace without breaking other features.         |
 |  CON-6    |     The system should be easy to monitor and maintain, with proper logging and tools to keep it reliable and fix issues quickly.       |
+
+> ✒️ Author: Prabhnoor Saini
