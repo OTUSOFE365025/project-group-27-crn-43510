@@ -5,3 +5,7 @@ As technology is rapidly advancing continuously, its usage has become an essenti
 In order to solve and manage these inefficiencies and challenges, an AI-Powered Digital Assistant Platform (AIDAP) is going to be designed to provide an interactive interface which will be able to effectively manage the university requirements and operations while improving communication amongst the stakeholders. By integrating with the university's external systems and use of artificial intelligence, AIDAP will be able to help the overall system be able to provide more efficient and accurate answers, managing all inquiries and operations requested by the stakeholders at a very fast pace. Some examples of this could be a student receiving updates and notifications about their schedule changes, upcoming exams, events, and deadlines, a lecturer being able to see classroom analytics such as grades and attendence, and the system responding to the queries within 2 seconds.
 
 Design Purpose: This is a greenfield system in a mature domain, and the purpose is to produce a sufficiently detailed design to support the construction of the system.
+
+
+
+> ✒️ Author: Hadia Ali
