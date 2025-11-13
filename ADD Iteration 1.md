@@ -1,8 +1,8 @@
-# ADD — Step 1: Review Inputs  
+# ADD Iteration 1
 **Project:** AIDAP — AI-Powered Digital Assistant Platform  
 **Iteration:** 1 — Establishing an overall system structure
 
-## 1. Review Inputs
+## Step 1. Review Inputs
 
 | **Category** | **Details** |
 |--------------|-------------|
