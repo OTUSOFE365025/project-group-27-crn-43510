@@ -15,8 +15,8 @@ The **AI-Powered Digital Assistant Platform (AIDAP)** helps students, lecturers,
 | 4    | [Constraints](Constraints.md) |
 | 5    | [Quality Attributes](Quality%20Attributes.md) |
 | 6    | [Use Case Diagram](Diagrams/Use%20Case.png) |
-| 7    | [Iteration Docs](Iterations%20Doc/ADD_Iteration_1_PhaseII_Group27.pdf)
-| 8    | [Iteration Docs](Iterations%20Doc/ADD_Iteration_2_PhaseII_Group27.pdf)
+| 7    | [ADD Iteration 1](Iterations%20Doc/ADD_Iteration_1_PhaseII_Group27.pdf)
+| 8    | [ADD Iteration 2](Iterations%20Doc/ADD_Iteration_2_PhaseII_Group27.pdf)
 
 
 ## 👥 Team Members (Contribution Matrix)
