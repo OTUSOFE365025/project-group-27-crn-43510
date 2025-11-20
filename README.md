@@ -24,9 +24,9 @@ The **AI-Powered Digital Assistant Platform (AIDAP)** helps students, lecturers,
 
 | Name | Student Number | Responsibilities  |
 |------|------|------|
-| Khushi Patel  | 100940709 | Use Cases, Concerns, README.md |
-| Prabhnoor Saini | 100946515 | Quality Attributes, Constraints, README.md |
-| Hadia Ali | 100876605 | Business Case      |
+| Khushi Patel  | 100940709 | Use Cases, Concerns, README.md, ADD Iteration 1, ADD Iteration 2|
+| Prabhnoor Saini | 100946515 | Quality Attributes, Constraints, README.md, ADD Iteration 1, ADD Iteration 2|
+| Hadia Ali | 100876605 | Business Case, ADD Iteration 1  |
 
 ## ⚙️ Technologies & Tools
 - **Diagramming Tool:** Draw.io (use case diagram)  
