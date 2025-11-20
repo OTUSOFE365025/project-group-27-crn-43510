@@ -1,5 +1,5 @@
 # AI-Powered Digital Assistant Platform (AIDAP)
-### SOFE3650F25 - Project Phase I
+### SOFE3650F25 - Project Phase II
 
 
 ## 📝 Overview
@@ -15,6 +15,8 @@ The **AI-Powered Digital Assistant Platform (AIDAP)** helps students, lecturers,
 | 4    | [Constraints](Constraints.md) |
 | 5    | [Quality Attributes](Quality%20Attributes.md) |
 | 6    | [Use Case Diagram](Diagrams/Use%20Case.png) |
+| 7    | [Iteration Docs](Iterations%20Doc/ADD_Iteration_1_PhaseII_Group27.pdf)
+| 8    | [Iteration Docs](Iterations%20Doc/ADD_Iteration_2_PhaseII_Group27.pdf)
 
 
 ## 👥 Team Members (Contribution Matrix)
