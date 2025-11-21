@@ -7,7 +7,7 @@
 | **Category** | **Details** |
 |--------------|-------------|
 | **Design purpose** | Greenfield system in a mature domain. Produce a detailed architecture to support construction of AIDAP that integrates with university systems and improves stakeholder communication and efficiency. |
-| **Primary functional requirements** | UC-1:Because it enables core interactions by allowing users to query institutional information.<br>UC-2:Because it keeps users informed through timely updates and announcements.<br> UC-3: Because it supports essential academic content management for lecturers and students.<br>UC-6:Because secure authentication and personalization are vital for user trust and data protection.<br>UC-8:Because synchronized data ensures accurate and consistent system responses. |
+| **Primary functional requirements** | **UC-1:** Because it enables core interactions by allowing users to query institutional information.<br> **UC-2:** Because it keeps users informed through timely updates and announcements.<br> **UC-3:** Because it supports essential academic content management for lecturers and students.<br> **UC-6:** Because secure authentication and personalization are vital for user trust and data protection.<br> **UC-8:** Because synchronized data ensures accurate and consistent system responses. |
 | **Quality attributes** | <table><thead><tr><th>Scenario ID</th><th>Importance to the Customer</th><th>Difficulty of Implementation (According to Architect)</th></tr></thead><tbody><tr><td>QA-1</td><td>High</td><td>Medium</td></tr><tr><td>QA-2</td><td>High</td><td>Medium</td></tr><tr><td>QA-3</td><td>Medium</td><td>Medium</td></tr><tr><td>QA-4</td><td>High</td><td>High</td></tr><tr><td>QA-5</td><td>High</td><td>High</td></tr><tr><td>QA-6</td><td>Medium</td><td>High</td></tr><tr><td>QA-7</td><td>Medium</td><td>Medium</td></tr><tr><td>QA-8</td><td>High</td><td>High</td></tr></tbody></table> From this list, **QA-1 (Performance)**, **QA-2 (Usability)**, **QA-4 (Security)**, **QA-5 (Availability)**, and **QA-8 (Interoperability)** are selected as the **architectural drivers** for Iteration 1, since they directly support the main user interactions and system dependability for AIDAP’s core functions.|
 | **Constraints** | All six constraints (CON-1 to CON-6) mentioned in **Constraints.md** are considered for AIDAP since they collectively ensure security, integration, performance, accessibility, and maintainability for the selected use cases.|
 | **Architectural concerns** | All six architectural concerns (CRN-1 to CRN-6) mentioned in **Concerns.md** are considered for AIDAP as they collectively ensure data privacy, system scalability, team efficiency, collaboration, consistent development practices, and seamless integration across all components.|
@@ -22,7 +22,7 @@ Although this iteration focuses on establishing the core architecture, the desig
 
 The architect must keep in mind the following key drivers:
 
-* **QA-1**: **Performance**
+* **QA-1**: Performance
 * **QA-2**: Usability
 * **QA-4**: Security
 * **QA-5**: Availability
@@ -31,7 +31,7 @@ The architect must keep in mind the following key drivers:
 Additional constraints influencing this iteration include:
 
 * **CON-1**: Data privacy and compliance with institutional security policies.
-* **CON-2**: **Seamless integration with approved university systems.**
+* **CON-2**: Seamless integration with approved university systems.
 * **CON-3**: Cloud-based deployment supporting scalability and uptime targets.
 * **CON-4**: Multi-platform accessibility (web, mobile, voice).
 
@@ -40,8 +40,8 @@ Architectural concerns shaping this iteration:
 * **CRN-1**: Maintain data privacy and compliance.
 * **CRN-2**: Design for scalability and maintainability.
 * **CRN-6**: Ensure proper integration between frontend and backend components.
+<p align="center"> <img src="Diagrams/Context%20Diagram.png" width="90%"></p>
 
-**Diagram here!!**
 
 ## Step 3: Choose one or more elements on the system to refine
 
@@ -108,7 +108,7 @@ This sketch was created using draw.io. Each element in the diagram was selected 
 | **User Workstations and AIDAP Application Server (API Gateway)** | Clients communicate with the server using secure HTTPS calls. |
 | **AIDAP Application Server and AIDAP Database Server** | Server executes DB queries to read/write user profiles, logs, and institutional data. |
 | **AIDAP Application Server and External University Systems** | The server interacts with LMS, Calendar, and SSO services via REST APIs and institution-approved protocols. |
-<img src="Diagrams/Deployment_Diagram_ADD1.drawio.png" width="90%">
+<p align="center"><img src="Diagrams/Deployment_Diagram_ADD1.drawio.png" width="90%"></p>
 
 ## Step 7: Perform Analysis of Current Design and Review Iteration Goal & Achievement of Design Purpose
 This step evaluates whether Iteration 1 successfully addressed the key drivers (UCs, QAs, Constraints, Concerns) that we decided upon in the step1.
@@ -126,7 +126,7 @@ This step evaluates whether Iteration 1 successfully addressed the key drivers (
 |               |        **QA-5**     |                         |Three-tier deployment and scalable backend identified, Replication design not yet done.|
 |               |            |              **QA-8**            |Integration connectors instantiated for LMS, Calendar, Email, SSO identity.|
 |               |        **CON-1**     |                         |API Gateway and SSO chosen but data minimization and retention rules are not yet designed.|
-|               |             |             **CON-2**            |AExternal connectors established using approved APIs and protocols.|
+|               |             |             **CON-2**            |External connectors established using approved APIs and protocols.|
 |               |            |            **CON-3**              |The three-tier deployment pattern directly supports cloud scaling but specific cloud provider decisions have not been made yet.|
 |               |            |            **CON-4**              |Web, Mobile and Voice clients instantiated.|
 |               |       **CON-5**       |                        |Hybrid architecture improves maintainability but code conventions and CI/CD pipelines are not yet defined.|
