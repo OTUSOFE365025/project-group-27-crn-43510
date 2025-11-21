@@ -109,3 +109,8 @@ This sketch was created using draw.io. Each element in the diagram was selected 
 | **AIDAP Application Server and AIDAP Database Server** | Server executes DB queries to read/write user profiles, logs, and institutional data. |
 | **AIDAP Application Server and External University Systems** | The server interacts with LMS, Calendar, and SSO services via REST APIs and institution-approved protocols. |
 <img src="Diagrams/Deployment_Diagram_ADD1.drawio.png" width="90%">
+
+## Step 7: Perform Analysis of Current Design and Review Iteration Goal & Achievement of Design Purpose
+This step evaluates whether Iteration 1 successfully addressed the key drivers (UCs, QAs, Constraints, Concerns) that we decided upon in the step1.
+
+
