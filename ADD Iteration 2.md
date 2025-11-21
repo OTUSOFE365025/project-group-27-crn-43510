@@ -134,7 +134,7 @@ The sequence diagram illustrates how AIDAP automatically synchronizes institutio
 
 
 <div style="text-align: center;">
-  <img src="Diagrams/Sequence_Diagram_UC_8.png" alt="Sequence Diagram UC 8" width="700">
+  <img src="Diagrams/Sequence_Diagram_UC_8.png" alt="Sequence Diagram UC 8" width="800">
 </div>
 
 From the interactions identified in the sequence diagram, initial methods for the interfaces of the interacting elements can be identified:
