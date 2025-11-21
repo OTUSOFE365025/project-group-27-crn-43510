@@ -13,8 +13,6 @@
 | **Constraints** | All six constraints (CON-1 to CON-6) mentioned in **Constraints.md** are considered for AIDAP since they collectively ensure security, integration, performance, accessibility, and maintainability for the selected use cases.|
 | **Architectural concerns** | All six architectural concerns (CRN-1 to CRN-6) mentioned in **Concerns.md** are considered for AIDAP as they collectively ensure data privacy, system scalability, team efficiency, collaboration, consistent development practices, and seamless integration across all components.|
 
----
-
 ## Step 2: Establish Iteration Goal by Selecting Drivers
 
 The goal of this iteration is to address the general architectural concern of identifying and refining the internal structures and detailed interfaces required to support the primary functional requirements of the AIDAP system. Identifying these elements is crucial for understanding how functionality is realized across the service modules and for enabling effective work allocation to development teams, addressing the concerns of **CRN-3 (Workload Balancing and Efficiency)** and **CRN-4 (Collaboration and Communication)**.
@@ -24,13 +22,9 @@ In this second iteration, besides the functional implementation concern, the arc
 - **UC-3: Manage and Publish Course Materials**  
 - **UC-8: Synchronize Institutional Data**
 
----
-
 ## Step 3: Choose One or More Elements of the System to Refine
 
 In this iteration, we focus on refining the specific parts of AIDAP that directly support UC-3 and UC-8. This includes the backend services for course materials, the connectors that sync data with university systems, and the interfaces between the AI middleware and these services. These components are refined because they need to work together smoothly across different layers to handle academic content and keep institutional data updated.
-
----
 
 ## Step 4: Choose One or More Design Concepts That Satisfy the Selected Drivers
 
@@ -42,8 +36,6 @@ This step selects detailed design concepts and patterns that will ensure the rel
 | Adopt a Clear API Interface Pattern Between AI Middleware, Backend Services, and Connectors | A structured API design ensures smooth communication between the AI layer, backend services, and university systems. This helps reduce integration errors and supports cross-layer consistency for UC-3 and UC-8.<br><br>**Discarded Alternatives:** Allow each developer to design APIs independently, but this risks inconsistent endpoints, duplicates logic, and slows integration. |
 | Apply a Data Synchronization Pattern for Institutional Systems (LMS, Course Updates, Resources) | Ensures data exchanged between external institutional systems and AIDAP stays accurate and up-to-date. This pattern supports reliability and reduces the chance of stale or mismatched academic data.<br><br>**Alternative Considered:** Perform manual or ad-hoc synchronization, but this can lead to data drift, increased maintenance work, and unreliable system behavior. |
 
----
-
 ## Step 5: Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
 
 | Design Decisions and Location | Rationale |
@@ -54,8 +46,6 @@ This step selects detailed design concepts and patterns that will ensure the rel
 | Allocate responsibilities across layers (Task-Specific Services → Connectors → Data Layer) | Responsibilities are now divided: services handle logic, connectors handle communication, and the data layer handles storage. This reduces coupling and clarifies which component owns which part of the workflow, preventing overlap or duplication in work. This also makes the management easier. |
 | Define data exchange structures for synchronization | Since data-sync reliability is a driver in this iteration, the system must define the exact data formats and mapping rules used between systems. This prevents inconsistent data during syncing and reduces errors caused by unclear formats. |
 
----
-
 ## Step 6: Sketch Views and Record Design Decision
 
 As a result of the decisions made in step 5, several diagrams are created.  
@@ -65,28 +55,21 @@ Figure 3 shows a sketch of a module view with modules that are derived from the 
 Figure 4 shows the initial sequence diagram from UC-3.  
 Figure 5 shows the initial sequence diagram for UC-8.
 
----
-
 ## Figure 1  
 <div style="text-align: center;">
   <img src="Diagrams/Initial_Domain_Model.png" alt="Initial Domain Model" width="600">
 </div>
-
----
 
 ## Figure 2
 <div style="text-align: center;">
   <img src="Diagrams/domain use case model.drawio.png" alt="Domain Use Case Model" width="600">
 </div>
 
----
 
 ## Figure 3
 <div style="text-align: center;">
   <img src="Diagrams/modules supporting primary UCs.drawio.png" alt="Modules Supporting Primary UCs" width="600">
 </div>
-
----
 
 ## Client Side
 
@@ -117,19 +100,12 @@ Figure 5 shows the initial sequence diagram for UC-8.
 | System Logs Store | Records system events, errors, and audit data for monitoring. |
 | Sync Scheduler | Automates and triggers data synchronization jobs on a schedule. |
 
-
----
-
 ## Figure 4: UC-3 Sequence Diagram Description
 The sequence diagram shows how a lecturer uploads a PDF and how the system processes it. First, the User sends the file to the AI Middleware, which analyzes the request. The middleware then calls the CourseMaterialService to create new course material. This service loads the related Course, creates a CourseMaterial object, validates it, and finally stores it in the CourseDatabase. Once the database confirms success, the service sends a confirmation back to the middleware, which then notifies the user that the upload is complete. Then the changes will be reflected on the students application as well.
-
----
 
 <div style="text-align: center;">
   <img src="Diagrams/Sequence_Diagram_UC_3.png" alt="Sequence Diagram UC 3" width="600">
 </div>
-
----
 
 From the interactions identified in the sequence diagram, initial methods for the interfaces of the interacting elements can be identified:
 
@@ -152,18 +128,14 @@ From the interactions identified in the sequence diagram, initial methods for th
 | **Element: CourseDatabase** |  |
 | `success (201 OK)` (response) | Confirms that the course material was successfully stored in the database. |
 
----
 
-## Figure 5 UC-8
+## Figure 5 UC-8 Synchronize Institutional Data
 The sequence diagram illustrates how AIDAP automatically synchronizes institutional data with external systems. First, the Data Source Systems trigger the AI Middleware, which then invokes the DataSyncService to begin synchronization. The service loads the configuration settings and sequentially fetches data from the  four connectors: LMS, Registration, Calendar, and Email. After receiving all external data, the service merges the information and updates the CourseDatabase. Once the update is successful, the DataSyncService sends a confirmation back to the AI Middleware, which then reports the synchronization status to the data source systems. This ensures that institutional data is always kept accurate and up to date across all connected platforms.
 
----
 
 <div style="text-align: center;">
   <img src="Diagrams/Sequence_Diagram_UC_8.png" alt="Sequence Diagram UC 8" width="700">
 </div>
-
----
 
 From the interactions identified in the sequence diagram, initial methods for the interfaces of the interacting elements can be identified:
 
@@ -192,8 +164,6 @@ From the interactions identified in the sequence diagram, initial methods for th
 | `EmailData()` (response) | Returns email system data used for synchronization. |
 | **Element: CourseDatabase** |  |
 | `InstitutionalData()` (response) | Stores the merged and updated institutional dataset received from DataSyncService. |
-
----
 
 ## Step 7: Perform Analysis of Current Design and Review Iteration Goal and Achievement of Design Purpose
 
