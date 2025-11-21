@@ -57,8 +57,6 @@ In this iteration, refinement is performed through high-level decomposition, est
 
 ## Step 4: Choose One or More Design Concepts That Satisfy the Selected Drivers
 
-## Design Decision Summary
-
 | **Design Decision & Locations** | **Rationale** |
 |--------------------------------|----------------|
 | **Logically structure the system using a Hybrid Layered and Microservices Reference Architecture.**|The hybrid combination of Layered and Microservices architectures allows AIDAP to separate concerns across presentation, logic, and data layers (Layered pattern) while maintaining modular and independently deployable services (Microservices).<br>This approach supports QA-1 (Performance) by allowing concurrent processing and scalability, QA-4 (Security) through isolated modules with defined APIs, and QA-8 (Interoperability) by enabling seamless integration with multiple institutional systems through microservice-based connectors.<br> <br> **Discarded Alternatives** <table><tr><th>Alternative</th><th>Reason for Discarding</th></tr><tr><td>**Monolithic Architecture**</td><td>Rejected because it would tightly couple UI, <br>business logic, and data management, making the system difficult to scale,<br> maintain, and update (violates QA-3 and QA-6).</td></tr><tr><td>**Pure Microservices Architecture**</td><td>Discarded because the project is in early development and lacks the need for <br>full-scale microservice independence. A hybrid layered approach ensures simpler <br>coordination and lower initial complexity.</td></tr><tr><td>**Client-Server Architecture**</td><td>Not selected because it provides limited flexibility and poor scalability compared<br> to modern web-based distributed designs.</td></tr></table>|
@@ -67,6 +65,17 @@ In this iteration, refinement is performed through high-level decomposition, est
 |**Use an AI Middleware Layer for Query Interpretation and Response Generation**|Using an AI middleware layer for query interpretation and response generation strengthens the system by ensuring that natural language queries are processed efficiently, directly supporting QA-1 (Performance). This layer also enhances QA-4 (Security) by isolating the user data from the core AI model, preventing unnecessary exposure of sensitive information. Additionally, placing AI logic in a modular and independent layer improves maintainability and adaptability, which aligns with CON-5, as it allows the system to evolve, update, or change AI components without breaking the rest of the architecture. <br><br> **Discarded Alternatives:** <table><tr><th>Alternative</th><th>Reason for Discarding</th></tr><tr><td>**Direct model embedding inside frontend**</td><td>Discarded due to security risks and high resource requirements.</td></tr></table>|
 |**Use API Gateway + Authentication Service with Institutional SSO**|This design satisfies QA-4 (Security) and CON-1 (Privacy Rules) by enforcing strong privacy protections and centralized access management. It also centralizes access control to ensure consistent and secure handling of user data. Additionally, by managing load distribution, it helps maintain QA-5 (Availability), ensuring the system stays responsive even during peak hours.<br><br> **Discarded Alternatives** <table><tr><th>Alternative</th><th>Reason for Discarding</th></tr><tr><td>**Independent authentication within each service**</td><td>Discarded because it duplicates logic, makes the code <br>unnecessarily longer, and increases security risks.</td></tr></table>|
 
+## Step 5:  Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
+In this iteration, several design concepts selected in Step 4 are instantiated into concrete architectural elements. The focus is on identifying which modules must exist and the responsibilities that they need to acquire.(Detailed interfaces will be defined in later iterations)
 
+| **Design Decision and Location** | Rationale |
+|----------------------------------|-----------|
+| **Create a dedicated AI Middleware Module** | Required to support the Step-4 decision of separating AI logic from backend services. This module will handle natural-language interpretation and response generation, supporting QA-1 (Performance) and QA-4 (multi-platform access). |
+| **Instantiate an API Gateway Component** | Supports Step-4 decision to centralize access control. Ensures CON-1 compliance and improves QA-5 by managing load before requests reach backend services. |
+| **Instantiate a Multi-Interface Client Module (Web, Mobile, Voice)** | Required by the Step-4 decision to support CON-4 (multi-platform access). This module will help handle user interactions and forward all queries to the backend. |
+| **Create Backend Service Modules (Announcements, Authorization, LMS Queries, Profiles)** | These modules support Step-4’s decision of using a scalable service layer. They support UC-1, UC-2, UC-3 and ensure backend logic is separated from AI processing (CRN-2). |
+| **Instantiate Integration Connectors for LMS, Identity, and Institutional Systems** | Supports QA-8 and CON-2 by formalizing the components that interact with external university systems. |
+| **Create a Central Data Store** | Supports CON-3 and QA-5. Stores user profiles, logs, and synchronized data shared by AI and backend services. |
 
+## Step 6: Sketch views and Record Design Decisions
 
