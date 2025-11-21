@@ -40,3 +40,17 @@ Architectural concerns shaping this iteration:
 * **CRN-1**: Maintain data privacy and compliance.
 * **CRN-2**: Design for scalability and maintainability.
 * **CRN-6**: Ensure proper integration between frontend and backend components.
+
+**Diagram here!!**
+
+## Step 3: Choose one or more elements on the system to refine
+
+Since AIDAP is a greenfield system, the element chosen for refinement in this iteration is the entire AIDAP platform, including its core components:
+
+* User interaction layer (web, mobile, voice)
+* AI assistant engine
+* Backend service layer
+* Integration and data synchronization layer
+* Institutional database and external system connectors
+
+In this iteration, refinement is performed through high-level decomposition, establishing the foundational structure that will support secure authentication, fast responses, and reliable data synchronization across university systems.
