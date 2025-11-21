@@ -1,6 +1,6 @@
 # ADD Iteration 2
 **Project:** AIDAP - AI-Powered Digital Assistant Platform  
-**Iteration:** 2 - Identifying Structures to Support Primary Functionality
+**Iteration:** 2 - Identifying Structures to Support Primary Functionality  
 [**PDF Version for Iteration 2**](Iterations%20Doc/ADD_Iteration2_PhaseII_Group27.pdf)
 
 ## Step 1. Review Inputs (Same as Iteration 1)
