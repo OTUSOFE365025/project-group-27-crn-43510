@@ -120,7 +120,7 @@ Figure 5 shows the initial sequence diagram for UC-8.
 
 ---
 
-## Figure 4: UC-3 — Sequence Diagram Description
+## Figure 4: UC-3 Sequence Diagram Description
 The sequence diagram shows how a lecturer uploads a PDF and how the system processes it. First, the User sends the file to the AI Middleware, which analyzes the request. The middleware then calls the CourseMaterialService to create new course material. This service loads the related Course, creates a CourseMaterial object, validates it, and finally stores it in the CourseDatabase. Once the database confirms success, the service sends a confirmation back to the middleware, which then notifies the user that the upload is complete. Then the changes will be reflected on the students application as well.
 
 ---
