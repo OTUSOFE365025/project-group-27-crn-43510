@@ -65,7 +65,8 @@ In this iteration, refinement is performed through high-level decomposition, est
 |**Use an AI Middleware Layer for Query Interpretation and Response Generation**|Using an AI middleware layer for query interpretation and response generation strengthens the system by ensuring that natural language queries are processed efficiently, directly supporting QA-1 (Performance). This layer also enhances QA-4 (Security) by isolating the user data from the core AI model, preventing unnecessary exposure of sensitive information. Additionally, placing AI logic in a modular and independent layer improves maintainability and adaptability, which aligns with CON-5, as it allows the system to evolve, update, or change AI components without breaking the rest of the architecture. <br><br> **Discarded Alternatives:** <table><tr><th>Alternative</th><th>Reason for Discarding</th></tr><tr><td>**Direct model embedding inside frontend**</td><td>Discarded due to security risks and high resource requirements.</td></tr></table>|
 |**Use API Gateway + Authentication Service with Institutional SSO**|This design satisfies QA-4 (Security) and CON-1 (Privacy Rules) by enforcing strong privacy protections and centralized access management. It also centralizes access control to ensure consistent and secure handling of user data. Additionally, by managing load distribution, it helps maintain QA-5 (Availability), ensuring the system stays responsive even during peak hours.<br><br> **Discarded Alternatives** <table><tr><th>Alternative</th><th>Reason for Discarding</th></tr><tr><td>**Independent authentication within each service**</td><td>Discarded because it duplicates logic, makes the code <br>unnecessarily longer, and increases security risks.</td></tr></table>|
 
-## Step 5:  Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
+## Step 5:  Instantiate Architect
+ural Elements, Allocate Responsibilities, and Define Interfaces
 In this iteration, several design concepts selected in Step 4 are instantiated into concrete architectural elements. The focus is on identifying which modules must exist and the responsibilities that they need to acquire.(Detailed interfaces will be defined in later iterations)
 
 | **Design Decision and Location** | Rationale |
@@ -78,4 +79,33 @@ In this iteration, several design concepts selected in Step 4 are instantiated i
 | **Create a Central Data Store** | Supports CON-3 and QA-5. Stores user profiles, logs, and synchronized data shared by AI and backend services. |
 
 ## Step 6: Sketch views and Record Design Decisions
+<img src="Diagrams/Architecture%20diagram%20Iterarion1.drawio.png" width="90%">
 
+### Elements & Responsibility Table
+This sketch was created using draw.io. Each element in the diagram was selected and assigned a short description of its responsibilities. At this stage, the descriptions are intentionally simple and only outline the major functional responsibilities of each module, without going into detailed behavior. The following table summarizes the information that is captured for the AIDAP reference architecture.
+
+| **Element** | Responsibility |
+|-------------|---------------|
+| **Client Presentation Layer** | Displays the user interface (web/mobile/voice), collects user input, and sends requests to the API Gateway. |
+| **API Gateway** | Authenticates users, enforces access control, rate limits, and routes incoming requests to AI Middleware or backend services. |
+| **AI Middleware Service** | Performs NLP, intent classification, and converts natural-language queries into structured service requests. |
+| **Backend Services** | Executes domain-specific operations, retrieves required data, applies business rules, and coordinates workflows. |
+| **Integration Connectors (LMS, Identity, Institutional Systems)** | Communicate with external university systems, transform incoming data, and synchronize external information with backend services. |
+| **Central Data Store** | Stores AIDAP-related data such as user profiles, logs, cached LMS/announcement data, and maintains backups/replication. |
+| **External University Systems** | Provide authoritative LMS, schedule, identity, and institutional data accessed through Integration Connectors. |
+
+### Deployment Diagram Description for AIDAP
+| **Element** | Responsibility |
+|-------------|---------------|
+| **User Workstations (Web Browser, Mobile OS, Voice Assistant)** | Run the client interface and send requests to AIDAP through HTTPS. |
+| **AIDAP Application Server (API Gateway, Authentication, AI Middleware, Task Services)** | Processes all incoming requests, performs authentication, runs AI logic, and executes task-specific services. |
+| **AIDAP Database Server (User Profiles, Institutional Data, Logs & AI Cache)** | Stores all persistent data including users, institutional datasets, logs, and cached AI results. |
+| **External University Systems (LMS, Calendar, SSO Identity Provider)** | Provide academic data, scheduling information, and identity verification to AIDAP. |
+
+### Relationships Between Deployment Elements
+| **Relationship** | Description |
+|------------------|-------------|
+| **User Workstations and AIDAP Application Server (API Gateway)** | Clients communicate with the server using secure HTTPS calls. |
+| **AIDAP Application Server and AIDAP Database Server** | Server executes DB queries to read/write user profiles, logs, and institutional data. |
+| **AIDAP Application Server and External University Systems** | The server interacts with LMS, Calendar, and SSO services via REST APIs and institution-approved protocols. |
+<img src="Diagrams/Deployment_Diagram_ADD1.drawio.png" width="90%">
