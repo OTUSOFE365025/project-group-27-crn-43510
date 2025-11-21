@@ -16,7 +16,7 @@
 
 This is the first iteration in the design of AIDAP (AI-Powered Digital Assistant Platform), a greenfield system that integrates AI capabilities with institutional data systems.
 
-The iteration goal is to establish an overall architectural foundation that ensures secure, responsive, and scalable interaction between users and institutional data sources while also enabling reliable synchronization across all connected systems.
+The iteration goal is to establish an overall architectural foundation that ensures <br>secure, responsive, and scalable interaction between users and institutional data sources while also enabling reliable synchronization across all connected systems.
 
 Although this iteration focuses on establishing the core architecture, the design must consider the primary quality attribute drivers and system constraints that make the foundation for future iterations and steps.
 
@@ -54,3 +54,17 @@ Since AIDAP is a greenfield system, the element chosen for refinement in this it
 * Institutional database and external system connectors
 
 In this iteration, refinement is performed through high-level decomposition, establishing the foundational structure that will support secure authentication, fast responses, and reliable data synchronization across university systems.
+
+## Step 4: Choose One or More Design Concepts That Satisfy the Selected Drivers
+
+## Design Decision Summary
+
+| **Design Decision & Locations** | **Rationale** |
+|--------------------------------|----------------|
+| **Logically structure the system using a Hybrid Layered and Microservices Reference Architecture.**|The hybrid combination of Layered and Microservices architectures allows AIDAP to separate concerns across presentation, logic, and data layers (Layered pattern) while maintaining modular and independently deployable services (Microservices).<br>This approach supports QA-1 (Performance) by allowing concurrent processing and scalability, QA-4 (Security) through isolated modules with defined APIs, and QA-8 (Interoperability) by enabling seamless integration with multiple institutional systems through microservice-based connectors.<br> <br> **Discarded Alternatives** <table><tr><th>Alternative</th><th>Reason for Discarding</th></tr><tr><td>Monolithic Architecture</td><td>Rejected because it would tightly couple UI, <br>business logic, and data management, making the system difficult to scale,<br> maintain, and update (violates QA-3 and QA-6).</td></tr><tr><td>Pure Microservices Architecture</td><td>Discarded because the project is in early development and lacks the need for <br>full-scale microservice independence. A hybrid layered approach ensures simpler <br>coordination and lower initial complexity.</td></tr><tr><td>Client-Server Architecture</td><td>Not selected because it provides limited flexibility and poor scalability compared<br> to modern web-based distributed designs.</td></tr></table>|
+|**Use a Three-Tier Deployment Pattern (Client → Backend → Database)**| A three-tier deployment structure supports AIDAP by separating the presentation layer, application logic, and data management, ensuring clear distribution of responsibilities and simplified maintenance. This structure aligns with CON-4 by enabling consistent access across multiple platforms and supports CON-3 through compatibility with scalable cloud deployment environments. It also contributes to QA-1 (Performance) and QA-5 (Availability) by allowing each tier to scale independently and maintain operation under high load. Additionally, isolating AI-driven logic within the application tier improves maintainability and supports CRN-2 by keeping complex processing separate from the user interface. <br><br> **Discarded Alternatives:** <table><tr><th>Alternative</th><th>Reason for Discarding</th></tr><tr><td>Two-Tier Architecture</td><td>Not chosen because data must come from many external institutional systems, which <br> requires a dedicated backend tier.</td></tr><tr><td>Multi-Tier (n > 3)</td><td>Not selected at this stage since additional tiers would increase complexity and are not <br>needed until specific modules (like analytics) are more advanced.</td></tr></table>|
+|**Implement the Client Layer Using Web + Mobile + Voice Interfaces**| Implementing the client layer through Web, Mobile, and Voice interfaces ensures that AIDAP is accessible across all major platforms used by students and faculty, supporting CON-4 (multi-platform accessibility). This approach enhances QA-2 (Usability) by providing users with flexible interaction options, and it improves inclusivity by supporting hands-free and mobile access. Separating these interfaces from backend logic also aligns with CRN-2 by keeping interface development modular and maintainable. <br><br> **Discarded alternative:** <table><tr><th>Alternative</th><th>Reason for Discarding</th></tr><tr><td>Single-platform (web-only or mobile-only)</td><td>Discarded because it contradicts accessibility and user convenience<br> requirements.</td></tr></table>|
+
+
+
+
