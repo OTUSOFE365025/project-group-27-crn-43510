@@ -113,4 +113,27 @@ This sketch was created using draw.io. Each element in the diagram was selected 
 ## Step 7: Perform Analysis of Current Design and Review Iteration Goal & Achievement of Design Purpose
 This step evaluates whether Iteration 1 successfully addressed the key drivers (UCs, QAs, Constraints, Concerns) that we decided upon in the step1.
 
-
+| Not Addressed | Partially Addressed | Completely Addressed | Design Decisions Made During the Iteration |
+|---------------|----------------------|------------------------|--------------------------------------------|
+|               |                      |           **UC-1**             | Selected hybrid Layered and Microservices architecture establishes modules (AI Middleware, Task Services) that will support query handling. |
+|               |                      |            **UC-2**            | Task-Specific Services and Integration Connectors created to fetch and deliver announcements.
+|               |           **UC-3**   |                         | Modules identified (Task Services and Connectors), but details of LMS workflows have not yet been refined. |
+|               |                      |            **QA-6**            | API Gateway & Authentication Service instantiated, SSO integration also supported. |
+|               |               **QA-8**       |                        | Integration connectors created, but synchronization rules and schedules are not yet defined.|
+|               |         **QA-1**             |                        | AI Middleware layer chosen to isolate heavy logic; three-tier deployment supports scaling. Exact performance strategies have not yet been elaborated.|
+|               |        **QA-2**     |                         |Multi-interface client layer defined, but detailed UX flows are not yet established.|
+|               |        **QA-4**     |                         |API Gateway, Authentication Service, and isolated AI layer chosen; however, detailed rules and encryption policies are still pending.|
+|               |        **QA-5**     |                         |Three-tier deployment and scalable backend identified, Replication design not yet done.|
+|               |            |              **QA-8**            |Integration connectors instantiated for LMS, Calendar, Email, SSO identity.|
+|               |        **CON-1**     |                         |API Gateway and SSO chosen but data minimization and retention rules are not yet designed.|
+|               |             |             **CON-2**            |AExternal connectors established using approved APIs and protocols.|
+|               |            |            **CON-3**              |The three-tier deployment pattern directly supports cloud scaling but specific cloud provider decisions have not been made yet.|
+|               |            |            **CON-4**              |Web, Mobile and Voice clients instantiated.|
+|               |       **CON-5**       |                        |Hybrid architecture improves maintainability but code conventions and CI/CD pipelines are not yet defined.|
+|               |       **CON-6**       |                        |Microservice-friendly structure supports extensibility, but no module lifecycle or extension guidelines defined yet.|
+|               |       **CRN-1**       |                        |Architectural structure supports compliance but formal data-flow classifications are pending.|
+|               |             |           **CRN-2**              |Reference architectures and modular service decomposition selected.|
+|       **CRN-3**         |             |                        |No technology or process decisions made yet relating to team collaboration.|
+|       **CRN-4**         |             |                        |No explicit decisions made; API versioning not defined.|
+|       **CRN-5**         |             |                        |No decisions on standards, frameworks, or development guidelines.|
+|               |       **CRN-3**       |                        |Client layers and API Gateway defined, but detailed interface specifications not yet defined.|
