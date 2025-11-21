@@ -1,7 +1,7 @@
 # ADD Iteration 1
 **Project:** AIDAP - AI-Powered Digital Assistant Platform  
 **Iteration:** 1 - Establishing an overall system structure  
-[**PDF Version for Iteration 1**](Iterations%20Doc/ADD_Iteration1_PhaseII_Group27.pdf)
+[**PDF Version for Iteration 1**](Iterations%20Doc/ADD_Iteration_1_PhaseII_Group27.pdf)
 
 ## Step 1. Review Inputs
 
