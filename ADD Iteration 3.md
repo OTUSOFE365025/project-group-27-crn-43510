@@ -8,3 +8,7 @@
 | **Constraints** | All six constraints (CON-1 to CON-6) mentioned in **Constraints.md** are considered for AIDAP since they collectively ensure security, integration, performance, accessibility, and maintainability for the selected use cases.|
 | **Architectural concerns** | All six architectural concerns (CRN-1 to CRN-6) mentioned in **Concerns.md** are considered for AIDAP as they collectively ensure data privacy, system scalability, team efficiency, collaboration, consistent development practices, and seamless integration across all components.|
 
+## Step 2: Establish Iteration Goal by Selecting Drivers
+
+For this iteration, the architect focuses on the QA-5 (Availability) quality attribute scenario, while also addressing QA-1 (Performance) through scalability:
+> A critical backend service (e.g. Course Material Service) fails during peak usage (e.g. start of semester). The system detects the failure and resumes operation using a redundant instance in less than 30 seconds, ensuring no downtime for the end-user.
