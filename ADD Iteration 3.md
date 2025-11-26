@@ -35,3 +35,17 @@ This step selects detailed design concepts and patterns that will ensure the rel
 | **Adopt the Primary-Replica Database Replication Tactic** | To ensure the **CourseDatabase** can survive a server failure without data loss and allow quick recovery, we must replicate the data layer. Writes will go to the Primary, and if the Primary fails, a Replica will be promoted. This directly supports **QA-5 (Availability)** for the data tier. |
 | **Implement the Circuit Breaker Fault Tolerance Pattern** | This software tactic is applied to the **Integration Connectors**. If an external system (like the LMS) is slow or down, the Circuit Breaker prevents the connection attempts from blocking our internal redundant services, thereby preserving the **QA-5 (Availability)** of AIDAP itself. |
 | **Employ a Health Monitor Pattern** | This mechanism is essential for the Load Balancer to meet the **30 second wimdow**. The Load Balancer will constantly ping the Application Server nodes (just like a heartbeat). If a node misses the heartbeat, it is immediately marked unhealthy and removed from the rotation. |
+
+## Step 5: Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
+
+The design decisions made in the previous steps are now instantiated into concrete architectural elements with specific responsibilities. This ensures the physical structure supports the **QA-5 (Availability)** and **QA-1 (Performance)** goals.
+
+| Design Decisions and Location | Rationale |
+| :--- | :--- |
+| **Cluster critical services (e.g., CourseMaterialService) across more than 2 identical application server nodes.** | Because two or more replicas of the application server are running actively at any time, the system can instantly switch traffic if one node fails. This implements the **Active Redundancy** tactic, achieving the **30 second recovery window** required by **QA-5 (Availability)**. |
+| **Configure the API Gateway to operate as a Load Balancer (Load-Balanced Cluster Pattern).** | The Load Balancer monitors the health of all application server nodes and distributes traffic using a smart algorithm (like Round-Robin). This ensures load is balanced (**QA-1 Performance**) and that traffic is immediately redirected away from unhealthy nodes. |
+| **Adopt Asynchronous Primary-Replica Database Replication for the CourseDatabase.** | Replicating the database ensures data is preserved even if the Primary database server node fails. The Replica can be promoted quickly to ensure continuous data access (**QA-5 Availability**). |
+| **Implement Circuit Breakers and Fallbacks within the Integration Connectors.** | Using this standard fault tolerance technology guarantees that intermittent or long-term failures in external university systems (LMS, Calendar) do not deplete resources or block the redundant internal services, preserving the **QA-5 (Availability)** of the AIDAP core system. |
+| **Standardize technology for Load Balancing and Replication (e.g., cloud-native services or mature open-source tools).** | Technological maturity provides proven, well-supported solutions for complex availability and load balancing problems without needing to develop custom, ad-hoc solutions, saving time and ensuring higher long-term reliability. |
+
+The results of these instantiation decisions are recorded in the next step.
