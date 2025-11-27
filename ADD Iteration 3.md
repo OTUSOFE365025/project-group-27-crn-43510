@@ -23,14 +23,14 @@ The combined iteration goal is to establish a highly available and scalable phys
 
 ## Step 3: Choose One or More Elements of the System to Refine
 
-Since the goal of this iteration is to ensure high **Availability (QA-5)** and **Scalability (QA-1)** with a recovery time of less than 30 seconds, we must look beyond the purely logical services defined in Iteration 2 (like CourseMaterialService) and refine the **physical deployment structure** that hosts them.
+Since the goal of this iteration is to ensure high Availability (QA-5), Scalability (QA-1), and resilience to external failures (QA-8), we must look beyond the purely logical services defined in Iteration 2 (like CourseMaterialService) and refine the physical deployment structure that hosts them.
 
-The elements of the system that need refinement to achieve redundancy and fast failover are the following:
+TThe elements of the system that need refinement to achieve redundancy, fast failover, and fault tolerance are the following:
 
-* **Application Server Nodes:** These are the physical or virtual hosts that run the backend microservices (like the CourseMaterialService). They must be replicated to enable failover.
-* **API Gateway / Load Balancer:** The entry point to the system must be refined to include a **Load Balancer** capability. This new element is critical for distributing traffic across the application servers and detecting when one fails.
-* **Database Server:** The central repository for all critical data (CourseDatabase) must be able to survive a server failure without data loss, thus requiring a **replication mechanism** meaning creating a replica configuration.
-* **Integration Connectors:** While the connectors themselves were defined in Iteration 2, they must be refined to incorporate **Fault Tolerance** logic (like the Circuit Breaker pattern) to ensure that a failure in an external system doesn't affect our internal redundant servers.
+* **Application Server Nodes:** These are the physical or virtual hosts that run the backend microservices (like CourseMaterialService). They must be replicated to enable failover.
+* **API Gateway / Load Balancer:** The entry point to the system must be refined to include a Load Balancer capability. This new element is critical for distributing traffic across the application servers (QA-1) and detecting when one fails (QA-5).
+* **Database Server:** The central repository for all critical data (CourseDatabase) must be able to survive a server failure without data loss, thus requiring a replication mechanism meaning creating a replica configuration.
+* **Integration Connectors:** While the connectors themselves were defined in Iteration 2, they must be refined to incorporate Fault Tolerance logic (like the Circuit Breaker pattern) to ensure that a failure in an external system doesn't affect our internal redundant servers (QA-8).
 
 ## Step 4: Choose One or More Design Concepts That Satisfy the Selected Drivers
 
