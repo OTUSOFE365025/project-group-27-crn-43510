@@ -46,21 +46,21 @@ This step selects detailed design concepts and patterns (/tactics) that will ens
 
 ## Step 5: Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
 
-The design decisions made in the previous steps are now instantiated into concrete architectural elements with specific responsibilities. This ensures the physical structure supports the **QA-5 (Availability)** and **QA-1 (Performance)** goals.
+The design decisions made in the previous steps are now instantiated into concrete architectural elements with specific responsibilities. This ensures the physical structure supports the **QA-5 (Availability)**, **QA-1 (Performance)**, and **QA-8 (Interoperability)** goals.
 
 | Design Decisions and Location | Rationale |
 | :--- | :--- |
 | **Cluster critical services (e.g. CourseMaterialService) across more than 2 identical application server nodes** | Because two or more replicas of the application server are running actively at any time, the system can instantly switch traffic if one node fails. This implements the Active Redundancy tactic, achieving the 30 second recovery window required by QA-5 (Availability). |
 | **Configure the API Gateway to operate as a Load Balancer (Load-Balanced Cluster Pattern)** | The Load Balancer monitors the health of all application server nodes and distributes traffic using a smart algorithm. This ensures load is balanced and that traffic is immediately redirected away from unhealthy nodes. |
 | **Adopt Asynchronous Primary-Replica Database Replication for the CourseDatabase** | Replicating the database ensures data is preserved even if the Primary database server node fails. The Replica can be promoted quickly to ensure continuous data access. |
-| **Implement Circuit Breakers and Fallbacks within the Integration Connectors** | Using this standard fault tolerance technology guarantees that long-term failures in external university systems (LMS, Calendar) do not deplete resources or block the internal services, preserving the QA-5 (Availability) of the AIDAP core system. |
+| **Implement Circuit Breakers and Fallbacks within the Integration Connectors** | Using this standard fault tolerance technology guarantees that long-term failures in external university systems (LMS, Calendar) do not deplete resources or block the internal services. This preserves QA-5 (Availability) while establishing QA-8 (Interoperability) resilience against unreliable external dependencies. |
 | **Standardize technology for Load Balancing and Replication (e.g. cloud-native services, mature open-source tools)** | Technological maturity provides proven, well-supported solutions for complex availability and load balancing problems without needing to develop custom, ad-hoc solutions, saving time and ensuring higher long-term reliability. |
 
 The results of these instantiation decisions are recorded in the next step.
 
 ## Step 6: Sketch Views and Record Design Decisions
 
-Figure 1 shows a refined deployment diagram. This view updates the Iteration 1 diagram by introducing a Load Balancer, replicating the Application Server into a cluster, and splitting the Database Server into a Primary/Replica configuration to support QA-5 (Availability).
+Figure 1 shows a refined deployment diagram. This view updates the Iteration 1 diagram by introducing a Load Balancer, replicating the Application Server into a cluster, and splitting the Database Server into a Primary/Replica configuration to support **QA-5 (Availability)**, **QA-1 (Performance),** and **QA-8 (Interoperability)**.
 
 ### Figure 1: Refined Deployment Diagram (Physical View)
 
@@ -76,13 +76,15 @@ The following table describes responsibilities for elements that have not been l
 | **App Server Node (Replica)** | A physical or virtual computing unit that hosts the AIDAP backend components (Middleware, Services). It is replicated to provide Active Redundancy. |
 | **Database Cluster** | Manages the persistence of User Profiles, Institutional Data, and Logs. It consists of a Primary node for writing data and a Replica node for reading data and standing by for failover. |
 
-The UML sequence diagram shown in Figure 1 illustrates how the system handles a failure. It depicts the scenario where App Server Node 1 fails during operation, and the Load Balancer detects this via the Health Monitor pattern and routes the request to App Server Node 2, ensuring QA-5 (Availability) without user downtime.
+The UML sequence diagram shown in Figure 2 illustrates how the system handles a failure. It depicts the scenario where App Server Node 1 fails during operation, and the Load Balancer detects this via the Health Monitor pattern and routes the request to App Server Node 2, ensuring **QA-5 (Availability)** and **QA-1 (Performance)** without user downtime. The presence of Circuit Breakers inside the Application Server Nodes ensures that external failures **(related to QA-8)** would be handled before this sequence ever begins.
 
 ### Figure 2: Sequence Diagram illustrating Failover (QA-5)
 
 <div style="text-align: center;">
   <img src="Diagrams/Sequence_Diagram_ADD3.png" alt="Deployment Diagram" width="800">
-</div>
+</div>  
+
+The following table details the specific responsibilities of each architectural Element involved in executing the QA-5 (Availability) failover scenario, demonstrating how the Load Balancer manages the recovery process within the required 30-second window.  
 
 | Element | Responsibility in the QA-5 Failover Scenario |
 | :--- | :--- |
@@ -90,5 +92,18 @@ The UML sequence diagram shown in Figure 1 illustrates how the system handles a 
 | **Load Balancer** | Coordinates the failover: detects Node 1's failure (via health check) and **reroutes** the request to Node 2 for recovery. |
 | **App Server Node 1 (Unhealthy)** | **Fails** to respond to the request, triggering the Load Balancer's failure detection mechanism. |
 | **App Server Node 2 (Healthy)** | **Processes the rerouted request** successfully, providing the immediate response needed to meet the **30-second recovery time**. |
+
+## Step 7: Perform Analysis of Current Design and Review Iteration Goal
+
+| Not Addressed | Partially Addressed | Completely Addressed | Design Decisions Made During the Iteration |
+| :--- | :--- | :--- | :--- |
+| | **QA-1**| | The Load-Balanced Cluster Pattern distributes traffic across replicated App Server Nodes, significantly boosting performance under peak load. However, optimal performance is still contingent on future Caching strategy design (Iteration 4). |
+| |**QA-2** | | Eliminating downtime (via QA-5) and improving responsiveness (via QA-1) directly enhances user experience. Usability design (UI/UX) is still pending in a later iteration. |
+|  |**QA-4** | | The Load Balancer/API Gateway serves as a single enforcement point for security. However, specific security details for intra-cluster communication (such as Node-to-DB) have not been defined. |
+| | **QA-5** | | Active Redundancy and the Health Monitor tactic achieve the required 30-second RTO. However, the choice of Asynchronous DB Replication accepts a risk of minor data loss. |
+|  | **QA-8**| | The Circuit Breaker Pattern successfully protects AIDAP's internal services from external system failures. However, the requirement to log and alert operations staff about external failures for effective QA-8 management remains an undesigned monitoring system. |
+|  | | **CON-1** | The Load Balancer/API Gateway is the single point responsible for enforcing secure HTTPS for incoming traffic, and this decision supports the constraint. |
+|**CRN-5** | | | This new architectural concern is introduced by the Active Redundancy tactic. No relevant decisions have been made to manage user session state across redundant App Server Nodes. Session data will be lost on failover, which is a new high risk. |
+| |**CRN-3**  | |  The new infrastructure demands complex DevOps tools for automated deployment and maintenance of the cluster. This is noted as a necessary constraint but the specific tools and practices are not yet chosen. |
 
 
