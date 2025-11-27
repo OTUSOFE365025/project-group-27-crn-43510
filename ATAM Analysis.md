@@ -40,7 +40,7 @@
 
 | **ID** | **Architectural Decision** | Explanation |
 | :--- | :--- | :--- |
-| **T1** | **AD2** | **Trade-off: Availability (RTO <30s) vs. Data Consistency:** Prioritizing fast recovery via Asynchronous Replication comes at the cost of accepting the risk of minor data loss (R2). |
+| **T1** | **AD2** | **Trade-off: Availability (RTO $\le 30$ seconds) vs. Data Consistency:** Prioritizing fast recovery via Asynchronous Replication comes at the cost of accepting the risk of minor data loss (R2). |
 | **T2** | **AD1 / AD3** | **Trade-off: Availability vs. Complexity/Cost:** Adding redundant App Servers and Load Balancer clusters significantly increases hardware, maintenance, and operational complexity. |
 | **T3** | **AD1 / AD3** | **Trade-off: Availability vs. Effort:** The need for fast failover forces the use of complex, automated DevOps tools (CRN-3), increasing the initial development effort. |
 
