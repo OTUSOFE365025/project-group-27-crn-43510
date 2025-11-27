@@ -34,15 +34,15 @@ TThe elements of the system that need refinement to achieve redundancy, fast fai
 
 ## Step 4: Choose One or More Design Concepts That Satisfy the Selected Drivers
 
-This step selects detailed design concepts and patterns that will ensure the reliable implementation of **QA-5 (Availability)** and **QA-1 (Performance)** by defining how the chosen elements from Step 3 will be structured and operate.
+This step selects detailed design concepts and patterns (/tactics) that will ensure the reliable implementation of **QA-5 (Availability)**, **QA-1 (Performance)**, and **QA-8 (Interoperability)** by defining how the chosen elements from Step 3 will be structured and operate.
 
 | Design Decisions and Location | Rationale and Assumptions |
 | :--- | :--- |
-| **Apply the Active Redundancy Tactic** | By replicating the application server nodes (Service Cluster) and running all instances simultaneously, the system can instantly switch traffic to a healthy instance upon failure. This directly achieves the **"resumes operation in less than 30 seconds"** requirement of **QA-5 (Availability)**. |
-| **Introduce a Load-Balanced Cluster Pattern** | This pattern is necessary to manage the active redundant servers. The **Load Balancer** component which is a part of the refined API Gateway will continuously distribute traffic (**QA-1 Performance**) and perform health monitoring (**QA-5 Availability**) across the identical server nodes. |
-| **Adopt the Primary-Replica Database Replication Tactic** | To ensure the **CourseDatabase** can survive a server failure without data loss and allow quick recovery, we must replicate the data layer. Writes will go to the Primary, and if the Primary fails, a Replica will be promoted. This directly supports **QA-5 (Availability)** for the data tier. |
-| **Implement the Circuit Breaker Fault Tolerance Pattern** | This software tactic is applied to the **Integration Connectors**. If an external system (like the LMS) is slow or down, the Circuit Breaker prevents the connection attempts from blocking our internal redundant services, thereby preserving the **QA-5 (Availability)** of AIDAP itself. |
-| **Employ a Health Monitor Pattern** | This mechanism is essential for the Load Balancer to meet the **30 second wimdow**. The Load Balancer will constantly ping the Application Server nodes (just like a heartbeat). If a node misses the heartbeat, it is immediately marked unhealthy and removed from the rotation. |
+| **Apply the Active Redundancy Tactic** | By replicating the application server nodes (Service Cluster) and running all instances simultaneously, the system can instantly switch traffic to a healthy instance upon failure. This directly achieves the "resumes operation in less than 30 seconds" requirement of QA-5 (Availability). |
+| **Introduce a Load-Balanced Cluster Pattern** | This pattern is necessary to manage the active redundant servers. The Load Balancer component which is a part of the refined API Gateway will continuously distribute traffic (QA-1 Performance) and perform health monitoring (QA-5 Availability) across the identical server nodes. |
+| **Adopt the Primary-Replica Database Replication Tactic** | To ensure the CourseDatabase can survive a server failure without data loss and allow quick recovery, we must replicate the data layer. Writes will go to the Primary, and if the Primary fails, a Replica will be promoted. This directly supports QA-5 (Availability) for the database. |
+| **Implement the Circuit Breaker Fault Tolerance Pattern** | This software tactic is applied to the Integration Connectors. If an external system (like the LMS) is slow or down, the Circuit Breaker prevents the connection attempts from blocking our internal redundant services, thereby preserving the QA-5 (Availability) and ensuring QA-8 (Interoperability) robustness. |
+| **Employ a Health Monitor Pattern** | This mechanism is essential for the Load Balancer to meet the 30 second window. The Load Balancer will constantly ping the Application Server nodes (just like a heartbeat). If a node misses the heartbeat, it is immediately marked unhealthy and removed from the rotation. |
 
 ## Step 5: Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
 
