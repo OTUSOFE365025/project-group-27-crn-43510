@@ -10,8 +10,16 @@
 
 ## Step 2: Establish Iteration Goal by Selecting Drivers
 
-For this iteration, the architect focuses on the QA-5 (Availability) quality attribute scenario, while also addressing QA-1 (Performance) through scalability:
-> A critical backend service (e.g. Course Material Service) fails during peak usage (e.g. start of semester). The system detects the failure and resumes operation using a redundant instance in less than 30 seconds, ensuring no downtime for the end-user.
+For this iteration, the architect focuses on the following three architectural drivers:
+
+**1. QA-5 (Availability):** system resilience  
+**2. QA-1 (Performance):** redundancy and scalability  
+**3. QA-8 (Interoperability):** fault tolerance for external systems  
+
+The combined iteration goal is to establish a highly available and scalable physical deployment structure that is also resilient to failures in external university systems.
+
+**Scenario:**
+> A critical backend service (e.g., Course Material Service) fails during peak usage (e.g., start of semester). The system detects the failure and resumes operation using a redundant instance in less than 30 seconds, AND simultaneously ensures that temporary failures in external systems (like the LMS or Calendar) do not cause a cascading failure in AIDAP.
 
 ## Step 3: Choose One or More Elements of the System to Refine
 
