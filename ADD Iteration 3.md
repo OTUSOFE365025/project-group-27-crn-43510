@@ -49,3 +49,20 @@ The design decisions made in the previous steps are now instantiated into concre
 | **Standardize technology for Load Balancing and Replication (e.g. cloud-native services, mature open-source tools)** | Technological maturity provides proven, well-supported solutions for complex availability and load balancing problems without needing to develop custom, ad-hoc solutions, saving time and ensuring higher long-term reliability. |
 
 The results of these instantiation decisions are recorded in the next step.
+
+## Step 6: Sketch Views and Record Design Decisions
+
+Figure 1 shows a refined deployment diagram. This view updates the Iteration 1 diagram by introducing a Load Balancer, replicating the Application Server into a cluster, and splitting the Database Server into a Primary/Replica configuration to support QA-5 (Availability).
+
+### Figure 1: Refined Deployment Diagram (Physical View)
+
+<<Insert DIagram here>>
+
+The following table describes responsibilities for elements that have not been listed previously in Iteration 1, focusing on the physical infrastructure changes:
+| Element | Responsibility |
+| :--- | :--- |
+| **Load Balancer (Refined Gateway)** | Dispatches and balances the load of requests coming from User Devices to the Application Server Nodes. It monitors the health of the nodes and routes traffic away from failed nodes to satisfy the 30-second recovery window. |
+| **App Server Node (Replica)** | A physical or virtual computing unit that hosts the AIDAP backend components (Middleware, Services). It is replicated to provide Active Redundancy. |
+| **Database Cluster** | Manages the persistence of User Profiles, Institutional Data, and Logs. It consists of a Primary node for writing data and a Replica node for reading data and standing by for failover. |
+
+
