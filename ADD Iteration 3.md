@@ -57,8 +57,9 @@ Figure 1 shows a refined deployment diagram. This view updates the Iteration 1 d
 ### Figure 1: Refined Deployment Diagram (Physical View)
 
 <div style="text-align: center;">
-  <img src="Diagrams/Deployment_Diagram_ADD3.png" alt="Deployment Diagram" width="600">
+  <img src="Diagrams/Deployment_Diagram_ADD3.drawio.png" alt="Deployment Diagram" width="600">
 </div>
+
 
 The following table describes responsibilities for elements that have not been listed previously in Iteration 1, focusing on the physical infrastructure changes:
 | Element | Responsibility |
