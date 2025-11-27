@@ -73,7 +73,7 @@ The UML sequence diagram shown in Figure 1 illustrates how the system handles a 
 ### Figure 2: Sequence Diagram illustrating Failover (QA-5)
 
 <div style="text-align: center;">
-  <img src="Diagrams/Sequence_Diagram_ADD3.drawio.jpg" alt="Deployment Diagram" width="800">
+  <img src="Diagrams/Sequence_Diagram_ADD3.png" alt="Deployment Diagram" width="800">
 </div>
 
 | Element | Responsibility in the QA-5 Failover Scenario |
