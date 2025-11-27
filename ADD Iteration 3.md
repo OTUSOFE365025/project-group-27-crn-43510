@@ -68,4 +68,19 @@ The following table describes responsibilities for elements that have not been l
 | **App Server Node (Replica)** | A physical or virtual computing unit that hosts the AIDAP backend components (Middleware, Services). It is replicated to provide Active Redundancy. |
 | **Database Cluster** | Manages the persistence of User Profiles, Institutional Data, and Logs. It consists of a Primary node for writing data and a Replica node for reading data and standing by for failover. |
 
+The UML sequence diagram shown in Figure 1 illustrates how the system handles a failure. It depicts the scenario where App Server Node 1 fails during operation, and the Load Balancer detects this via the Health Monitor pattern and routes the request to App Server Node 2, ensuring QA-5 (Availability) without user downtime.
+
+### Figure 2: Sequence Diagram illustrating Failover (QA-5)
+
+<div style="text-align: center;">
+  <img src="Diagrams/Sequence_Diagram_ADD3.drawio.jpg" alt="Deployment Diagram" width="800">
+</div>
+
+| Element | Responsibility in the QA-5 Failover Scenario |
+| :--- | :--- |
+| **User Device** | Starts the process and receives the final result. It is **unaware** of the system's failure and recovery. |
+| **Load Balancer** | Coordinates the failover: detects Node 1's failure (via health check) and **reroutes** the request to Node 2 for recovery. |
+| **App Server Node 1 (Unhealthy)** | **Fails** to respond to the request, triggering the Load Balancer's failure detection mechanism. |
+| **App Server Node 2 (Healthy)** | **Processes the rerouted request** successfully, providing the immediate response needed to meet the **30-second recovery time**. |
+
 
