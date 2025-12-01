@@ -114,3 +114,9 @@
         </tr>
     </tbody>
 </table>
+
+## Utility Tree
+
+<div style="text-align: center;">
+  <img src="Diagrams/Utility Tree.png" alt="Utility Tree" width="1000">
+</div>
