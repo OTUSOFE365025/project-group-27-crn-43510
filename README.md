@@ -1,5 +1,5 @@
 # AI-Powered Digital Assistant Platform (AIDAP)
-### SOFE3650F25 - Project Phase I
+### SOFE3650F25 - Project FInal Phase
 
 
 ## 📝 Overview
@@ -14,7 +14,11 @@ The **AI-Powered Digital Assistant Platform (AIDAP)** helps students, lecturers,
 | 3    | [Architectural Concerns](Concerns.md) |
 | 4    | [Constraints](Constraints.md) |
 | 5    | [Quality Attributes](Quality%20Attributes.md) |
-| 6    | [Use Case Diagram](Diagrams/Use%20Case.png) |
+| 6    | [Iteration 3](ADD%20Iteration%203.md) |
+| 7    | [ATAM Analysis](ATAM%20Analysis.md) |
+| 8    | [Utility Diagram](Diagrams/Utility%20Tree.png) |
+| 9    | [Use Case Diagram](Diagrams/Use%20Case.png) |
+
 
 
 ## 👥 Team Members (Contribution Matrix)
@@ -22,14 +26,13 @@ The **AI-Powered Digital Assistant Platform (AIDAP)** helps students, lecturers,
 
 | Name | Student Number | Responsibilities  |
 |------|------|------|
-| Khushi Patel  | 100940709 | Use Cases, Concerns, README.md |
-| Prabhnoor Saini | 100946515 | Quality Attributes, Constraints, README.md |
-| Hadia Ali | 100876605 | Business Case      |
+| Khushi Patel  | 100940709 | Iteration 3, ATAM Analysis & Risk Assessment |
+| Prabhnoor Saini | 100946515 | Iteration 3, ATAM Analysis & Risk Assessment|
+| Hadia Ali | 100876605 | Iteration 3, ATAM Utility Tree  |
 
 ## ⚙️ Technologies & Tools
-- **Diagramming Tool:** Draw.io (use case diagram)  
+- **Diagramming Tool:** Draw.io (Utility diagram)  
 - **Markdown & GitHub:** All project documentations are directly implemented in GitHub markdown.
-
 
 ## 📚 References
 - FCAPS Case Study Example – Professor’s Reference Material
